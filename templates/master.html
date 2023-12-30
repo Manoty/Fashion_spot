@@ -34,7 +34,7 @@
 <div class="offcanvas-menu-wrapper">
     <div class="offcanvas__option">
         <div class="offcanvas__links">
-            <a href="#">Sign in</a>
+            <a href="{% url 'registration-url' %}">Register</a>
             <a href="#">FAQs</a>
         </div>
         <div class="offcanvas__top__hover">
@@ -69,19 +69,15 @@
                         <p>Free shipping, 30-day return or refund guarantee.</p>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
+                            <a href="{% url 'registration-url' %}">Register</a>
                             <a href="#">FAQs</a>
                         </div>
                         <div class="header__top__hover">
-                            <span>Usd <i class="arrow_carrot-down"></i></span>
-                            <ul>
-                                <li>USD</li>
-                                <li>EUR</li>
-                                <li>USD</li>
-                            </ul>
+                            <li><a href="#">Logout</a></li>
                         </div>
                     </div>
                 </div>
@@ -100,19 +96,21 @@
                     <ul>
                         <li class="active"><a href="./index.html">Home</a></li>
                         <li><a href="./shop.html">Shop</a></li>
-                        <li><a href="#">Pages</a>
+                        <li><a href="#">Products</a>
                             <ul class="dropdown">
-                                <li><a href="./about.html">About Us</a></li>
-                                <li><a href="./shop-details.html">Shop Details</a></li>
+                                <li><a href="./about.html">Add_Products</a></li>
+                                <li><a href="./shop-details.html">View_Products</a></li>
                                 <li><a href="./shopping-cart.html">Shopping Cart</a></li>
                                 <li><a href="./checkout.html">Check Out</a></li>
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./contact.html">Contacts</a></li>
+                        <li><a href="#">Login</a></li>
+
                     </ul>
                 </nav>
+
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
@@ -127,6 +125,11 @@
     </div>
 </header>
 <!-- Header Section End -->
+<p class="text-center">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</p>
 {% block content %}
 
 {% endblock %}
