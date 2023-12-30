@@ -35,7 +35,7 @@
     <div class="offcanvas__option">
         <div class="offcanvas__links">
             <a href="{% url 'registration-url' %}">Register</a>
-            <a href="#">FAQs</a>
+
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -74,10 +74,10 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <a href="{% url 'registration-url' %}">Register</a>
-                            <a href="#">FAQs</a>
+
                         </div>
                         <div class="header__top__hover">
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="{% url 'logout-url' %}">Logout</a></li>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             </ul>
                         </li>
                         <li><a href="./contact.html">Contacts</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="{% url 'login-url' %}">Login</a></li>
 
                     </ul>
                 </nav>
@@ -117,7 +117,8 @@
                     <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
                     <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
                     <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
-                    <div class="price">$0.00</div>
+                    <strong>  {{ user.username }}</strong>
+
                 </div>
             </div>
         </div>
@@ -194,6 +195,7 @@
                     </p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
+
             </div>
         </div>
     </div>
