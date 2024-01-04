@@ -76,9 +76,7 @@
                             <a href="{% url 'registration-url' %}">Register</a>
 
                         </div>
-                        <div class="header__top__hover">
-                            <li><a href="{% url 'logout-url' %}">Logout</a></li>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -118,6 +116,16 @@
                     <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
                     <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
                     <strong>  {{ user.username }}</strong>
+                    <div class="header__top__hover">
+                        <form method="post" action="{% url 'logout-url' %}">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+
+                        </form>
+
+
+
+                    </div>
 
                 </div>
             </div>
