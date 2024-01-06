@@ -19,7 +19,7 @@
                             <div class="product__item__pic set-bg" data-setbg="{% static '../' %}{{ product.image }}">
                                 <span class="label">New</span>
                                 <ul class="product__hover">
-                                    <a class="btn btn-outline-danger" href="#">Delete</a>
+                                    <a class="btn btn-outline-danger" href="/Products/delete/{{ product.id }}">Delete</a>
                                     <a class="btn btn-outline-info" href="#">Update</a>
                                     <a class="btn btn-outline-warning" href="#">pay</a>
                                 </ul>

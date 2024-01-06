@@ -25,3 +25,10 @@ def add_products(request):
 
 def update_products(request):
     return render(request, 'Products/update-products.html')
+
+
+def delete(request, id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    messages.success(request, 'Product deleted successfully')
+    return redirect('products-url')
