@@ -23,8 +23,9 @@ def add_products(request):
         form = ProductForm()
     return render(request, 'Products/add-products.html', {'form':form})
 
-def update_products(request):
-    return render(request, 'Products/update-products.html')
+def update_products(request, id):
+    product = Product.objects.get(id=id)
+    return render(request, 'Products/update-products.html', {'product':product})
 
 
 def delete(request, id):

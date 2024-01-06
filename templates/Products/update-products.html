@@ -1,4 +1,24 @@
 {% extends 'master.html' %}
 {% block content %}
-	<h1>Updating product</h1>
+    <div class="row d-flex col-5 m-auto">
+
+        <form method="post" action="/Products/update/{{ product.id }}"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom mb-4">Updating products</legend>
+                <input value="{{ product.name }}" placeholder="product name" class="form-control" name="name" type="text"><br>
+                <input value="{{ product.qtty }}" placeholder="product qtty" class="form-control" name="qtty" type="text"><br>
+                <input value="{{ product.price }}" placeholder="product price" class="form-control" name="price" type="text"><br>
+                <input value="{{ product.desc }}" placeholder="product description" class="form-control" name="desc" type="text"><br>
+                <label>Product image</label><br>
+
+
+                <input class="form-control" name="image" type="file"><br>
+            </fieldset>
+            <div class="form-group">
+                <input class="btn btn-info mt-4" value="Update" type="submit">
+            </div>
+
+        </form>
+    </div>
 {% endblock %}
