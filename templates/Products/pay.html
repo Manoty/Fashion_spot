@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% block content %}
+    <div class="row d-flex col-5 m-auto">
+
+        <form method="post" action="" >
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom mb-4">Paying for {{ product.name }}</legend>
+                <label>Amount</label>
+                <input class="form-control" readonly  type="text" value="{{ product.price }}"><br>
+                <input placeholder="Enter phone number (2547...)" type="text"><br>
+            </fieldset>
+            <div class="form-group">
+                <input class="btn btn-info mt-4" value="save" type="submit">
+            </div>
+
+        </form>
+{% endblock %}

@@ -25,6 +25,20 @@ def add_products(request):
 
 def update_products(request, id):
     product = Product.objects.get(id=id)
+    if request.method == "POST":
+        product_name = request.POST.get('name')
+        product_qtty = request.POST.get('qtty')
+        product_price = request.POST.get('price')
+        product_desc = request.POST.get('desc')
+        product_image = request.FILES.get('image')
+        product.name = product_name
+        product.qtty = product_qtty
+        product.price = product_price
+        product.image = product_image
+        product.desc = product_desc
+        product.save()
+        messages.success(request, 'Product saved successfully')
+        return redirect('products-url')
     return render(request, 'Products/update-products.html', {'product':product})
 
 
@@ -33,3 +47,8 @@ def delete(request, id):
     product.delete()
     messages.success(request, 'Product deleted successfully')
     return redirect('products-url')
+
+
+def pay(request, id):
+    product =Product.objects.get(id=id)
+    return render(request, 'Products/pay.html', {'product':product})

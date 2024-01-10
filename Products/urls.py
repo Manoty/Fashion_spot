@@ -7,4 +7,5 @@ urlpatterns = [
     path('add-products/', my_views.add_products, name='add-products-url'),
     path('delete/<id>', my_views.delete, name='delete-url'),
     path('update/<id>', my_views.update_products, name='update-products-url'),
+    path('pay/<id>', my_views.pay, name='pay-url'),
 ]
