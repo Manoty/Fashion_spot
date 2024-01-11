@@ -3,6 +3,11 @@ from .forms import ProductForm
 from django.contrib import messages
 from .models import Product
 
+from .credentials import *
+from django.http import HttpResponse
+
+
+
 # Create your views here.
 def Products(request):
     all_products = Product.objects.all()
@@ -25,6 +30,7 @@ def add_products(request):
 
 def update_products(request, id):
     product = Product.objects.get(id=id)
+    '''
     if request.method == "POST":
         product_name = request.POST.get('name')
         product_qtty = request.POST.get('qtty')
@@ -39,6 +45,7 @@ def update_products(request, id):
         product.save()
         messages.success(request, 'Product saved successfully')
         return redirect('products-url')
+        '''
     return render(request, 'Products/update-products.html', {'product':product})
 
 
@@ -51,4 +58,26 @@ def delete(request, id):
 
 def pay(request, id):
     product =Product.objects.get(id=id)
+    if request.method == "POST":
+        phone = request.POST['phone']
+        amount = product.price
+        access_token = MpesaAccessToken.validated_mpesa_access_token
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        headers = {"Authorization": "Bearer %s" % access_token}
+        request = {
+            "BusinessShortCode": LipanaMpesaPassword.Business_short_code,
+            "Password": LipanaMpesaPassword.decode_password,
+            "Timestamp": LipanaMpesaPassword.lipa_time,
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": amount,
+            "PartyA": phone,
+            "PartyB": LipanaMpesaPassword.Business_short_code,
+            "PhoneNumber": phone,
+            "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+            "AccountReference": "PYMENT001",
+            "TransactionDesc": "School fees"
+        }
+
+        response = requests.post(api_url, json=request, headers=headers)
+        return HttpResponse("success")
     return render(request, 'Products/pay.html', {'product':product})
