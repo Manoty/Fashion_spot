@@ -14,7 +14,8 @@ class MpesaC2bCredential:
 class MpesaAccessToken:
     r = requests.get(MpesaC2bCredential.api_URL,
                      auth=HTTPBasicAuth(MpesaC2bCredential.consumer_key, MpesaC2bCredential.consumer_secret))
-    print("Response text:", r.text)
+    print(r.text)
+
     mpesa_access_token = json.loads(r.text)
     validated_mpesa_access_token = mpesa_access_token["access_token"]
 
