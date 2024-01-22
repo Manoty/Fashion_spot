@@ -13,49 +13,38 @@
             </div>
 
             {% for product in products %}
-                <div class="row product__filter">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{% static '../' %}{{ product.image }}">
-                                <span class="label">New</span>
-                                <ul class="product__hover">
-                                    <a class="btn btn-outline-danger" href="/Products/delete/{{ product.id }}">Delete</a>
-                                    <a class="btn btn-outline-info" href="/Products/update/{{ product.id }}">Update</a>
-                                    <a class="btn btn-outline-warning" href="/Products/pay/{{ product.id }} ">pay</a>
-                                </ul>
+                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-6 mix new-arrivals">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                            <span class="label">New</span>
+                            <ul class="product__hover">
+                                <a class="btn btn-outline-danger" href="/Products/delete/{{ product.id }}">Delete</a>
+                                <a class="btn btn-outline-info" href="/Products/update/{{ product.id }}">Update</a>
+                                <a class="btn btn-outline-warning" href="/Products/pay/{{ product.id }}">Pay</a>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{ product.name }}</h6>
+                            <a href="#" class="add-cart">+ Add To Cart</a>
+
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
                             </div>
-                            <div class="product__item__text">
-                                <h6>{{ product.name }}</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                            <h5>{{ product.price }}</h5>
 
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5>{{ product.price }}</h5>
-
-                                <div class="product__color__select">
-                                    <label for="pc-1">
-                                        <input type="radio" id="pc-1">
-                                    </label>
-                                    <label class="active black" for="pc-2">
-                                        <input type="radio" id="pc-2">
-                                    </label>
-                                    <label class="grey" for="pc-3">
-                                        <input type="radio" id="pc-3">
-                                    </label>
-                                </div>
+                            <div class="product__color__select">
+                                <label for="pc-{{ product.id }}">
+                                    <input type="radio" id="pc-{{ product.id }}">
+                                </label>
+                                <!-- Add more color labels as needed -->
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
             {% endfor %}
         </div>
     </section>

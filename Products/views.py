@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ProductForm
 from django.contrib import messages
@@ -14,7 +15,7 @@ def Products(request):
     context = {"products":all_products}
     return render(request, 'Products/products.html', context)
 
-
+@login_required
 def add_products(request):
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
@@ -27,7 +28,7 @@ def add_products(request):
     else:
         form = ProductForm()
     return render(request, 'Products/add-products.html', {'form':form})
-
+@login_required
 def update_products(request, id):
     product = Product.objects.get(id=id)
     '''
@@ -48,14 +49,14 @@ def update_products(request, id):
         '''
     return render(request, 'Products/update-products.html', {'product':product})
 
-
+@login_required
 def delete(request, id):
     product = Product.objects.get(id=id)
     product.delete()
     messages.success(request, 'Product deleted successfully')
     return redirect('products-url')
 
-
+@login_required
 def pay(request, id):
     product =Product.objects.get(id=id)
     if request.method == "POST":
