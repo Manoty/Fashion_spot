@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% load crispy_forms_filters %}
 {% block content %}
-    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+
 
     <div class="d-flex col-4 m-auto">
 
@@ -18,7 +18,9 @@
 
             </div>
         </form>
-
+<div class="d-flex flex-column">
+    <a class="m-auto" href="{% url 'password_reset' %}">Forgot Password</a>
+</div>
 
     </div>
 
