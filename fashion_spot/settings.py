@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'fashion_spot',
     'crispy_forms',
     'crispy_bootstrap4',
-    'Products'
+    'Products',
+
+
 ]
 CRISPY_AllOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

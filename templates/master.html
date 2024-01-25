@@ -77,15 +77,16 @@
 
                         </div>
                         <div class="header__top__hover">
-                        <form method="post" action="{% url 'logout-url' %}">
-                            {% csrf_token %}
-                            <button type="submit">Logout</button>
+                            <form method="post" action="{% url 'logout-url' %}">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
 
-                        </form>
+                            </form>
 
 
 
-                    </div>
+                        </div>
+                        {# Add the profile button here #}
 
 
                     </div>
@@ -124,15 +125,29 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
-                    <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
-                    <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
-                    <strong>  {{ user.username }}</strong>
-
+                    <a style="font-family: 'Arial Rounded MT Bold'" href="{% url 'profile' %}">
+                        {% if user.is_authenticated %}
+                            <img src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'img/default_user_image.png' %}{% endif %}" alt="User Image" class="user-image">
+                            <strong>{{ user.username }}</strong>
+                        {% endif %}
+                    </a>
+                    <form method="post" action="{% url 'logout-url' %}">
+                        {% csrf_token %}
+                        <!-- Add a button to trigger the logout -->
+                        <button type="submit">Logout</button>
+                    </form>
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'login-url' %}">Login</a>
+                        <a href="{% url 'registration-url' %}">Register</a>
+                    {% endif %}
                 </div>
             </div>
+
         </div>
-        <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
+    <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+
 </header>
 <!-- Header Section End -->
 <p class="text-center">
@@ -201,7 +216,7 @@
                             document.write(new Date().getFullYear());
                         </script>
                         All rights reserved | Fashion Spot <i class="fa fa-heart-o"
-                                                                            aria-hidden="true"></i><a href="#" target="_blank"></a>
+                                                              aria-hidden="true"></i><a href="#" target="_blank"></a>
                     </p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
