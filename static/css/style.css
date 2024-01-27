@@ -751,6 +751,13 @@ ol {
 	padding-bottom: 125px;
 }
 
+.user-image {
+    border-radius: 50%;
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
 .categories__text {
 	padding-top: 40px;
 	position: relative;

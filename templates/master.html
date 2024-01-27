@@ -127,13 +127,16 @@
                     <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
                     <a style="font-family: 'Arial Rounded MT Bold'" href="{% url 'profile' %}">
                         {% if user.is_authenticated %}
-                            <img src="{% if user.profile.image %}{{ user.profile.image.url }}{% else %}{% static 'img/default_user_image.png' %}{% endif %}" alt="User Image" class="user-image">
+                            {% if user.profile.image %}
+                                <img src="{{ user.profile.image.url }}" alt="User Image" class="user-image">
+                            {% else %}
+                                <img src="{% static 'img/default_user_image.png' %}" alt="Default User Image" class="user-image">
+                            {% endif %}
                             <strong>{{ user.username }}</strong>
                         {% endif %}
                     </a>
                     <form method="post" action="{% url 'logout-url' %}">
                         {% csrf_token %}
-                        <!-- Add a button to trigger the logout -->
                         <button type="submit">Logout</button>
                     </form>
                     {% if not user.is_authenticated %}
@@ -142,6 +145,7 @@
                     {% endif %}
                 </div>
             </div>
+
 
         </div>
     </div>
