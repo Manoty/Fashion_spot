@@ -56,3 +56,24 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+PRIORITY = [('l', "low",),
+            ('M', "medium",),
+            ('H', "high"),
+            ]
+
+
+class Question(models.Model):
+    class Meta:
+        app_label = 'auth'
+    title = models.CharField(max_length=60)
+    question = models.TextField(max_length=400)
+    priority = models.CharField(max_length=1, choices=PRIORITY)
+
+    def __str__(self):
+        return self.title
+
+    #class Meta:
+        verbose_name = 'The Question'
+        verbose_name_plural ="People's Question"

@@ -135,14 +135,8 @@
                             <strong>{{ user.username }}</strong>
                         {% endif %}
                     </a>
-                    <form method="post" action="{% url 'logout-url' %}">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                    {% if not user.is_authenticated %}
-                        <a href="{% url 'login-url' %}">Login</a>
-                        <a href="{% url 'registration-url' %}">Register</a>
-                    {% endif %}
+
+
                 </div>
             </div>
 
