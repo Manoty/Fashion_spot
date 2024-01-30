@@ -42,9 +42,17 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'Products',
+    # 'suit',
+    # 'admin_tools',
+    # 'admin_tools.menu',
+    # 'admin_tools.dashboard',
+
+
 
 
 ]
+
+ADMIN_TOOLS_INDEX_DASHBOARD = 'fashion_spot.dashboard.CustomIndexDashboard'
 CRISPY_AllOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -82,6 +90,17 @@ WSGI_APPLICATION = 'fashion_spot.wsgi.application'
 
 
 # settings.py
+# SUIT_CONFIG = {
+#     'ADMIN_NAME': 'fashion-spot',
+#     'MENU': (
+#         {'label': 'Products', 'icon': 'icon-th-list', 'models': ('fashion_spot.Product',)},
+#         {'label': 'Users', 'icon': 'icon-user', 'models': ('auth.User',)},
+#         {'label': 'Orders', 'icon': 'icon-shopping-cart', 'models': ('fashion_spot.Order',)},
+#         {'label': 'Questions', 'icon': 'icon-question-sign', 'models': ('auth.Question',)},
+#     )
+# }
+
+
 
 
 
@@ -135,7 +154,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS =[BASE_DIR / 'static']
 
 # Default primary key field type

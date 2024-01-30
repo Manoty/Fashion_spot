@@ -314,11 +314,10 @@ ol {
 /*---------------------
   Header
 -----------------------*/
-
 .header {
-	background: #ffffff;
+    background-color: #333333;
+    color: #5e64d1;
 }
-
 .header__top {
 	background: #111111;
 	padding: 10px 0;
@@ -1053,7 +1052,7 @@ ol {
 .product__item__pic .product__hover li img {
 	background: #ffffff;
 	padding: 10px;
-	display: inline-block;
+	display: inline-flex;
 }
 
 .product__item__text {
@@ -1111,7 +1110,7 @@ ol {
 }
 
 .product__item__text .product__color__select label {
-	display: inline-block;
+	display:  inline-flex;
 	height: 12px;
 	width: 12px;
 	background: #5e64d1;

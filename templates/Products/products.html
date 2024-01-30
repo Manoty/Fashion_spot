@@ -11,41 +11,42 @@
                     </ul>
                 </div>
             </div>
-
-            {% for product in products %}
-                <div class="col-lg-3 col-xl-3 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <a class="btn btn-outline-danger" href="/Products/delete/{{ product.id }}">Delete</a>
-                                <a class="btn btn-outline-info" href="/Products/update/{{ product.id }}">Update</a>
-                                <a class="btn btn-outline-warning" href="/Products/pay/{{ product.id }}">Pay</a>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>{{ product.name }}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-lg-4  col-md-4 col-sm-6 mix new-arrivals">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                                <span class="label">New</span>
+                                <ul class="product__hover">
+                                    <a class="btn btn-outline-danger" href="/Products/delete/{{ product.id }}">Delete</a>
+                                    <a class="btn btn-outline-info" href="/Products/update/{{ product.id }}">Update</a>
+                                    <a class="btn btn-outline-warning" href="/Products/pay/{{ product.id }}">Pay</a>
+                                </ul>
                             </div>
-                            <h5>{{ product.price }}</h5>
+                            <div class="product__item__text">
+                                <h6>{{ product.name }}</h6>
+                                <a href="#" class="add-cart">+ Add To Cart</a>
 
-                            <div class="product__color__select">
-                                <label for="pc-{{ product.id }}">
-                                    <input type="radio" id="pc-{{ product.id }}">
-                                </label>
-                                <!-- Add more color labels as needed -->
+                                <div class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5>{{ product.price }}</h5>
+
+                                <div class="product__color__select">
+                                    <label for="pc-{{ product.id }}">
+                                        <input type="radio" id="pc-{{ product.id }}">
+                                    </label>
+                                    <!-- Add more color labels as needed -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}</div>
+
         </div>
     </section>
 {% endblock %}
