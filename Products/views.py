@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .forms import ProductForm
 from django.contrib import messages
 from .models import Product
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 from .credentials import *
 from django.http import HttpResponse
@@ -82,3 +84,28 @@ def pay(request, id):
         response = requests.post(api_url, json=request, headers=headers)
         return HttpResponse("success")
     return render(request, 'Products/pay.html', {'product':product})
+
+def mpesa_callback(request):
+    if request.method == 'POST':
+        # GET CALLBACK DATA FROM MPESA
+        callback_data = json.loads(request.body.decode('utf-8'))
+
+        # Process the  Mpesa callback data
+        transaction_status = callback_data.get('Body',{}).get('stkCallback',{}).get('ResultCode')
+
+        # Update database or send notificationbased on the transaction status
+        if transaction_status == 0:
+            #successful transaction
+            #update database / send notification
+            print('Notification: Payment successful.Transaction details:',callback_data)
+        else:
+            #failed transaction
+            #handle failure, update database
+            print('Notification: Payment failed.Transaction details:', callback_data)
+        response_data = {
+            "ResultCode":0,
+            "ResultDesc": 'Success',
+        }
+        return HttpResponse(json.dumps(response_data), content_type='application/json')
+
+    return HttpResponse(status=405)
